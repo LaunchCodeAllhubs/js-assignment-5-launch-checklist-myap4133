@@ -40,8 +40,8 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let fuel = Number(fuelLevel.value);
-    let cargo = Number(cargoLevel.value);
+    let fuel = fuelLevel.value;
+    let cargo = cargoLevel.value;
     let pilotCheck = validateInput(pilot.value);
     let copilotCheck = validateInput(copilot.value);
     let fuelCheck = validateInput(fuel);
@@ -63,20 +63,22 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
         pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch`;
         copilotStatus.innerHTML = `Co-pilot ${copilot.value} is ready for launch`;
+        fuelStatus.innerHTML = `Fuel level high enough for launch`;
+        cargoStatus.innerHTML = `Cargo mass low enough for launch`;
 
         head.innerHTML = `Shuttle is Ready for Launch`;
-        head.style.color = '#419F6A';
+        head.style.color = 'rgb(65, 159, 106)';
 
-        if(fuel < 10000){
+        if(Number(fuel) < 10000){
             fuelStatus.innerHTML = `Fuel level too low for launch`;
             head.innerHTML = `Shuttle Not Ready for Launch`;
             head.style.color = 'red';
         }
 
-        if(cargo > 10000){
+        if(Number(cargo) > 10000){
             cargoStatus.innerHTML = `Cargo mass too heavy for launch`;
             head.innerHTML = `Shuttle Not Ready for Launch`;
-            head.style.color = '#C7254E';
+            head.style.color = 'rgb(199, 37, 78)';
         }
     }
 }
