@@ -40,10 +40,12 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    let fuel = Number(fuelLevel.value);
+    let cargo = Number(cargoLevel.value);
     let pilotCheck = validateInput(pilot.value);
     let copilotCheck = validateInput(copilot.value);
-    let fuelCheck = validateInput(Number(fuelLevel.value));
-    let cargoCheck = validateInput(Number(cargoLevel.value));
+    let fuelCheck = validateInput(fuel);
+    let cargoCheck = validateInput(cargo);
 
     if(pilotCheck === "Empty" || copilotCheck === "Empty" || fuelCheck === "Empty" || cargoCheck === "Empty"){
         window.alert("Please fill out all fields.");
@@ -53,6 +55,29 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     }
     else {
         list.style.visibility = "visible";
+        const pilotStatus = document.getElementById("pilotStatus");
+        const copilotStatus = document.getElementById("copilotStatus");
+        const fuelStatus = document.getElementById("fuelStatus");
+        const cargoStatus = document.getElementById("cargoStatus");
+        const head = document.getElementById("launchStatus");
+
+        pilotStatus.innerHTML = `Pilot ${pilot.value} Ready`;
+        copilotStatus.innerHTML = `Co-pilot ${copilot.value} Ready`;
+
+        head.innerHTML = `Shuttle is Ready for Launch`;
+        head.style.color = rgb(65, 159, 106);
+
+        if(fuel < 10000){
+            fuelStatus.innerHTML = `Not Enough Fuel for the Journey`;
+            head.innerHTML = `Shuttle not Ready for Launch`;
+            head.style.color = 'red';
+        }
+
+        if(cargo > 10000){
+            cargoStatus.innerHTML = `Too Much Mass for Shuttle to Take Off`;
+            head.innerHTML = `Shuttle not Ready for Launch`;
+            head.style.color = rgb(199, 37, 78);
+        }
     }
 }
 
