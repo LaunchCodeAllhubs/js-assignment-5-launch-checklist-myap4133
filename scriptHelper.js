@@ -65,7 +65,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         copilotStatus.innerHTML = `Co-pilot ${copilot.value} Ready`;
 
         head.innerHTML = `Shuttle is Ready for Launch`;
-        head.style.color = rgb(65, 159, 106);
+        head.style.color = '#419F6A';
 
         if(fuel < 10000){
             fuelStatus.innerHTML = `Not Enough Fuel for the Journey`;
@@ -76,7 +76,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         if(cargo > 10000){
             cargoStatus.innerHTML = `Too Much Mass for Shuttle to Take Off`;
             head.innerHTML = `Shuttle not Ready for Launch`;
-            head.style.color = rgb(199, 37, 78);
+            head.style.color = '#C7254E';
         }
     }
 }
