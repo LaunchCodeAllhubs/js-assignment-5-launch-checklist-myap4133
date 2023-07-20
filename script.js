@@ -18,6 +18,7 @@ window.addEventListener("load", function() {
    let list = document.getElementById("faultyItems");
    list.style.visibility = "hidden";
    const submit = document.querySelector("form");
+
    submit.addEventListener("submit", function(event){
         event.preventDefault();
         const pilot = document.getElementById("pilotName");
@@ -25,7 +26,7 @@ window.addEventListener("load", function() {
         const fuelLevel = document.querySelector("input[name='fuelLevel']");
         const cargoLevel = document.querySelector("input[name='cargoMass']");
 
-        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
+        formSubmission(document, list, pilot.value, copilot.value, fuelLevel.value, cargoLevel.value);
         
    });
 });
